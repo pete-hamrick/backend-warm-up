@@ -58,5 +58,17 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+    
+    test('returns array of names', async() => {
+
+      const expectation = ['bessie', 'jumpy', 'spot'];
+
+      const data = await fakeRequest(app)
+        .get('/animals/names')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
   });
 });
